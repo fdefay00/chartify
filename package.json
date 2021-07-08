@@ -1,0 +1,35 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "Music Chart and comparaison app",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx webpack -w",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fdefay00/hr-rfe3-mvp.git"
+  },
+  "author": "Fabrice Defay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fdefay00/hr-rfe3-mvp/issues"
+  },
+  "homepage": "https://github.com/fdefay00/hr-rfe3-mvp#readme",
+  "devDependencies": {
+    "webpack": "^5.43.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "chart.js": "^3.4.1",
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

@@ -1,4 +1,5 @@
 ### node etc ###
+config.js
 
 # Logs
 logs
@@ -20,7 +21,7 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
-dist/
+dist/bundle.js
 
 # Dependency directorys
 # Deployed apps should consider commenting these lines out:
@@ -33,3 +34,6 @@ bower_components/
 .floobit
 .floo
 .flooignore
+
+# Misc
+.DS_Store

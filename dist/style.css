@@ -1,0 +1,22 @@
+body {
+  color: red
+}
+
+#header {
+  padding: 20px;
+  text-align: center;
+  background: #31352E;
+  color: white;
+  font-size: 20px;
+}
+
+/* // #31352E
+
+// Pewter
+// #EBEBE8
+
+// Sage Green
+// #D1E2C4
+
+// Olive
+// #778A35 */
