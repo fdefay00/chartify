@@ -12,9 +12,9 @@ exports.getArtist = async (market) => {
     id: info.id,
     name: info.name,
     popularity: info.popularity,
-    followers: info.followers.total,
-    images: info.images,
-    tracks: topTracks.tracks.map(track => [track.name, track.popularity])
+    followers: Math.floor(info.followers.total / 1000000),
+    image: info.images[1].url,
+    tracks: topTracks.tracks.map(track => ({name: track.name, popularity: track.popularity}))
   }
   return artistData
 }
@@ -30,7 +30,7 @@ const getArtistInfo = async () => {
         data: querystring.stringify({grant_type: 'client_credentials'}),
       })
 
-      const artist = await axios.get('https://api.spotify.com/v1/artists/181bsRPaVXVlUKXrxwZfHK/', {
+      const artist = await axios.get('https://api.spotify.com/v1/artists/3TVXtAsR1Inumwj472S9r4/', {
         headers: {
           Authorization: `Bearer ${token.data.access_token}`
         }
@@ -54,7 +54,7 @@ const getArtistTopTracks = async (market) => { //(by market)
       data: querystring.stringify({grant_type: 'client_credentials'}),
     })
 
-    const topTracks = await axios.get('https://api.spotify.com/v1/artists/181bsRPaVXVlUKXrxwZfHK/top-tracks?market=US', {
+    const topTracks = await axios.get('https://api.spotify.com/v1/artists/3TVXtAsR1Inumwj472S9r4/top-tracks?market=US', {
       headers: {
         Authorization: `Bearer ${token.data.access_token}`
       }
@@ -76,7 +76,7 @@ const getArtistAlbum = async (albumId) => {
       data: querystring.stringify({grant_type: 'client_credentials'}),
     })
 
-    const artist = await axios.get('https://api.spotify.com/v1/albums/6Lo6ylJg4qbFfxicPEOzMI', {
+    const artist = await axios.get('https://api.spotify.com/v1/albums/3TVXtAsR1Inumwj472S9r4', {
       headers: {
         Authorization: `Bearer ${token.data.access_token}`
       }

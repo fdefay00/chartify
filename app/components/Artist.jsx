@@ -1,11 +1,16 @@
 import React from 'react'
+import Chart2 from './Chart2.jsx'
 
-export default () => (
-  <div>
-    <div className="image"></div>
-    <h3>Name</h3>
-    <h3>chart title(region)</h3>
+export default ({artist}) => {
 
-    </div>
-    )
+
+ return (
+
+   <div className="artist">
+    <div className="image"><img src={artist.image}/></div>
+    <h3>{artist.name}</h3>
+
+   </div>
+   )
+}
     // <Chart followers, popularity, topTrack, />

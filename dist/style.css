@@ -1,5 +1,6 @@
 body {
-  color: red
+  color: #EBEBE8;
+  font-family: 'Rubik', sans-serif;
 }
 
 #header {
@@ -8,12 +9,89 @@ body {
   background: #31352E;
   color: white;
   font-size: 20px;
+  border-bottom: 4px solid #EBEBE8;
+
 }
 
-/* // #31352E
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 250px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #EBEBE8;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+#container {
+  display: flex;
+}
+
+#container aside {
+  border-right: 4px solid #EBEBE8;
+  /* flex-grow: 2; */
+  width: 15%;
+  background-color: #778A35;
+
+}
+#container main {
+  display: flex;
+  flex-grow: 4;
+  flex-direction: column;
+  background-color: #31352E;
+
+}
+
+.artistSection {
+  /* border: 2px solid #EBEBE8; */
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.artist {
+  padding: 1% 2%;
+  text-align: center;
+  font-size: 40px;
+}
+canvas {
+  /* border: 2px solid #EBEBE8; */
+}
+
+footer {
+  border-top: 4px solid #D1E2C4;
+
+  background-color: #31352E;
+  padding: 20px;
+  text-align: right;
+}
+footer h4 {
+  margin: 0 auto;
+}
+footer img {
+  width: 92px;
+  height: 28px;
+}
+
+/*
+// Dark
+// #31352E, 49, 53, 46
 
 // Pewter
-// #EBEBE8
+// #EBEBE8, 235, 235, 232
 
 // Sage Green
 // #D1E2C4
