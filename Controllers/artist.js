@@ -2,7 +2,45 @@ const axios = require('axios')
 const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } = require('../config.js')
 const querystring = require('querystring');
 
-const searchArtist = () => {}
+exports.searchArtist = async (q, market='US') => {
+  // q = 'nick'
+  // market = 'CL'
+  console.log(q, market)
+
+  try {
+    const token = await axios({
+      method: 'post',
+      url: 'https://accounts.spotify.com/api/token',
+      headers: {
+        Authorization: 'Basic ' + (new Buffer(SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET).toString('base64')),
+      },
+      data: querystring.stringify({grant_type: 'client_credentials'}),
+    })
+
+    let artist = await axios.get('https://api.spotify.com/v1/search?query='+q+'&offset=0&limit=1&type=artist&market='+ market, {
+      headers: {
+        Authorization: `Bearer ${token.data.access_token}`
+      }
+    })
+
+    const topTracks = await getArtistTopTracks(market)
+
+    artist = artist.data.artists.items[0]
+    const artistData = {
+      id: artist.id,
+      name: artist.name,
+      popularity: artist.popularity,
+      followers: (artist.followers.total / 1000000),
+      image: artist.images[1].url,
+      tracks: topTracks.tracks.map(track => ({name: track.name, popularity: track.popularity}))
+    }
+    console.log(artistData)
+    return artistData
+
+  } catch(err) {
+      console.log(err)
+  }
+}
 
 exports.getArtist = async (market) => {
   const info = await getArtistInfo()

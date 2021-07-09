@@ -9,8 +9,47 @@ body {
   background: #31352E;
   color: white;
   font-size: 20px;
-  border-bottom: 4px solid #EBEBE8;
+  border-bottom: 4px solid #D1E2C4;
+  display: flex;
+  justify-content: center;
+}
+header form {
+  width: 90%;
+}
+header h1 {
+  font-size: 30px;
+  border-left: 2px solid #D1E2C4;
+  border-bottom: 2px solid #D1E2C4;
+  padding:  10px;
+  color: #D1E2C4;
+}
+select {
+  width: 100px;
+  padding: 10px 10px;
+  border: none;
+  box-sizing: border-box;
+  background-color: #EBEBE8;
+  font-size: large;
 
+  /* border-radius: 4px; */
+  /* background-color: #f1f1f1; */
+}
+
+input {
+  width: 500px;
+  padding: 10px 10px;
+  margin: 0px auto;
+  /* border: none; */
+  box-sizing: border-box;
+  background-color: #EBEBE8;
+  font-size: large;
+  text-transform: uppercase;
+  color: #31352E;
+}
+input:focus {
+  /* background-color: lightblue; */
+  outline-width: 0;
+  border: 1px solid #D1E2C4;
 }
 
 .sidenav {
@@ -35,27 +74,39 @@ body {
   transition: 0.3s;
 }
 
+#container aside h1 {
+  font-size: 30px;
+  color: #EBEBE8;
+  text-decoration: underline;
+}
+
+#container aside h2 {
+  font-size: 17px;
+  color: #EBEBE8;
+  padding: 10px;;
+}
+
+
 #container {
   display: flex;
 }
 
 #container aside {
-  border-right: 4px solid #EBEBE8;
+  border-right: 4px solid #D1E2C4;
   /* flex-grow: 2; */
   width: 15%;
   background-color: #778A35;
-
+  text-align: center;
 }
 #container main {
   display: flex;
   flex-grow: 4;
   flex-direction: column;
   background-color: #31352E;
-
+  text-align: center;
 }
 
 .artistSection {
-  /* border: 2px solid #EBEBE8; */
   margin: 0 auto;
   display: flex;
   width: 100%;
@@ -63,12 +114,22 @@ body {
 }
 
 .artist {
+  position: relative;
   padding: 1% 2%;
   text-align: center;
   font-size: 40px;
 }
-canvas {
-  /* border: 2px solid #EBEBE8; */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.image img{
+  width: 280px;
+  height: 280px;
 }
 
 footer {

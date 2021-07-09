@@ -1,6 +1,6 @@
 const express = require('express')
 
-const {getArtist}  = require('./Controllers/artist.js')
+const {getArtist, searchArtist}  = require('./Controllers/artist.js')
 
 const app = express()
 
@@ -10,7 +10,9 @@ app.use(express.static('./dist'))
 
 
 app.get('/artist', (req, res) => {
-  getArtist()
+  const {q, market} = req.query
+  console.log(req.query)
+  searchArtist(q, market)
     .then(data => res.send(data))
     .catch(err => console.log(err))
 

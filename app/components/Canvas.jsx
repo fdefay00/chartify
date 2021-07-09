@@ -1,8 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-
-
 const options = {
   layout: {
     padding: {
@@ -24,10 +22,10 @@ const options = {
   }
 };
 
-const GroupedBar = ({data}) => (
+const GroupedBar = ({data, title}) => (
   <>
     <div className='header'>
-
+      <h2>{title}</h2>
     </div>
     <Bar data={data} options={options}   />
   </>

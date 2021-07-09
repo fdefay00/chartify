@@ -1,3 +1,3 @@
 import React from 'react'
 
-export default () => <div>SavedArtists</div>
+export default () => <h1>Favs </h1>

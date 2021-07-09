@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import axios from 'axios'
 import Canvas from './Canvas.jsx'
 import Artist from './Artist.jsx'
 import Header from './Header.jsx'
@@ -9,82 +10,66 @@ import Footer from './Footer.jsx'
 
 export default () => {
   const colors = ['#D1E2C4', '#EBEBE8', '#778A35']
-  const [artists, setArtists] = useState([
-    {
-    "id": "3TVXtAsR1Inumwj472S9r4",
-    "name": "Drake",
-    "popularity": 98,
-    "followers": 25,
-    "image": "https://i.scdn.co/image/ab676161000051749d6c72d285ab349ce7a93529",
-    "tracks": [
-      {
-        "name": "Wants and Needs (feat. Lil Baby)",
-        "popularity": 29
-        },
-        {
-        "name": "Laugh Now Cry Later (feat. Lil Durk)",
-        "popularity": 85
-        },
-    ]
-    },
-    {
-      "id": "3TVXtAsR1Inumwj472S9r4",
-      "name": "Megan",
-      "popularity": 98,
-      "followers": 65,
-      "image": "https://i.scdn.co/image/ab676161000051749d6c72d285ab349ce7a93529",
-      "tracks": [
-        {
-          "name": "Wants and Needs (feat. Lil Baby)",
-          "popularity": 39
-          },
-          {
-          "name": "Laugh Now Cry Later (feat. Lil Durk)",
-          "popularity": 85
-          },
-      ]
-      },
-      {
-        "id": "3TVXtAsR1Inumwj472S9r4",
-        "name": "Chris",
-        "popularity": 68,
-        "followers": 10,
-        "image": "https://i.scdn.co/image/ab676161000051749d6c72d285ab349ce7a93529",
-        "tracks": [
-          {
-            "name": "Wants and Needs (feat. Lil Baby)",
-            "popularity": 80
-            },
-            {
-            "name": "Laugh Now Cry Later (feat. Lil Durk)",
-            "popularity": 85
-            },
-        ]
-        }])
-    const data = {
-      labels: ['Followers (M)', 'Popularity', 'Top Track'],
-      datasets: artists.map((artist, i) => (
-        {
-          label: artist.name,
-          data: [artist.popularity, artist.followers, artist.tracks[0].popularity],
-          backgroundColor: colors[i],
-        }
-      ))
-    };
+  const [artists, setArtists] = useState([])
 
-  return(
+
+  const searchArtist = (q, market) => {
+    axios.get(`http://localhost:3000/artist?q=${q}&market=${market}`)
+    .then(res => {
+      if(artists.length > 2) {
+        const newList = [artists[1], artists[2]]
+        setArtists([...newList, res.data])
+      }
+      else{
+
+        setArtists([...artists, res.data])
+      }
+    console.log(artists)
+
+    })
+  }
+
+  const remove = (id) => {
+    const newList = artists.filter(artist => id !== artist.id)
+    setArtists(newList)
+  }
+
+  const data = {
+    labels: ['Popularity', 'Followers (M)', 'Top Track'],
+    datasets: artists.map((artist, i) => (
+      {
+        label: artist.name,
+        data: [artist.popularity, artist.followers, artist.tracks[0].popularity],
+        backgroundColor: colors[i],
+      }
+    ))
+  };
+  const tracks = artists.length === 0 ? {} : {
+    labels: artists[0].tracks.map(track => track.name),
+    datasets: artists.map((artist, i) => ({
+      label: artist.name,
+      data: artist.tracks.map(track => track.popularity),
+      backgroundColor: colors[i],
+    }))
+  }
+
+  return (
     <div>
-      <Header/>
+      <Header searchArtist={searchArtist}/>
       <div id='container'>
         <Aside className='sidenav'>
+          <PopularArtists search={searchArtist}/>
           <SavedArtists />
-          <PopularArtists />
         </Aside>
         <main>
           <div className='artistSection'>
-            {artists.map(artist => <Artist key={artist.key} artist={artist}/>)}
+            {artists.map(artist => <Artist key={artist.id} artist={artist} remove={remove}/>)}
           </div>
-          <Canvas artist={artists} data={data}/>
+          <div>
+            <Canvas artists={artists} data={data}/>
+            {//<Canvas artists={artists} data={tracks} title='Top Tracks'/>
+            }
+          </div>
         </main>
       </div>
       <Footer />
