@@ -4,7 +4,7 @@ const { getArtist, searchArtist } = require('./Controllers/artist.js');
 
 const app = express();
 
-// app.use(express.static('./dist'));
+app.use(express.static('./dist'));
 
 app.get('/', (req, res) => {
   res.send('Hello world');
