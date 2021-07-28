@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Music Chart and comparaison app",
   "main": "index.js",
+  "engines": {
+    "node": "15.7.0",
+    "npm": "7.4.3"
+  },
   "scripts": {
+    "start": "node server.js",
     "build": "npx webpack -w",
     "test": "jest"
   },
