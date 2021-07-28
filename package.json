@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "npx webpack -w",
+    "build:dev": "npx webpack -w",
     "test": "jest"
   },
   "repository": {
