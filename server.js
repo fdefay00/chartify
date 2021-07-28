@@ -4,7 +4,11 @@ const { getArtist, searchArtist } = require('./Controllers/artist.js');
 
 const app = express();
 
-app.use(express.static('./dist'));
+// app.use(express.static('./dist'));
+
+app.get('/', (req, res) => {
+  res.send('Hello world');
+});
 
 app.get('/artist', (req, res) => {
   const { q, market } = req.query;
