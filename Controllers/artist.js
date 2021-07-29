@@ -39,7 +39,7 @@ exports.searchArtist = async (q, market = 'US') => {
       image: artist.images[1].url,
       tracks: topTracks.tracks.map((track) => ({ name: track.name, popularity: track.popularity })),
     };
-    console.log(artistData);
+    // console.log(artistData);
     return artistData;
   } catch (err) {
     console.log(err);
@@ -105,7 +105,7 @@ const getArtistTopTracks = async (artistId, market) => {
         },
       }
     );
-    console.log(topTracks.data);
+    // console.log(topTracks.data);
     return topTracks.data;
   } catch (err) {
     console.log(err);

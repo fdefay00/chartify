@@ -85,14 +85,16 @@ export default ({ searchArtist }) => {
           value={searchInput}
           onChange={handleChange}
         />
-        <select onChange={(e) => setRegion(e.target.value)}>
+        {/*
+          <select onChange={(e) => setRegion(e.target.value)}>
           <option defaultValue value={region}>
             Region
           </option>
           {regions.map((region) => (
             <option value={region}>{region}</option>
           ))}
-        </select>
+          </select>
+          */}
       </form>
     </header>
   );

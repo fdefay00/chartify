@@ -21,7 +21,7 @@ export default () => {
       } else {
         setArtists([...artists, res.data]);
       }
-      console.log([...artists, res.data]);
+      // console.log([...artists, res.data]);
     });
   };
 

@@ -8,6 +8,7 @@ module.exports = (env) => {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'), //this is the folder you want to save your bundle in - feel free to change
     },
+    devtool: 'source-map',
 
     module: {
       rules: [
