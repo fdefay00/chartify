@@ -1,34 +1,40 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
+const colors = ['#D1E2C4', '#EBEBE8', '#778A35'];
 const options = {
-  layout: {
-    padding: {
-      left:100,
-      right: 100
-    }
-  },
   scales: {
     yAxes: [
-      {
-        ticks: {
-          // beginAtZero: true,
-        },
-      },
+      // {
+      //   ticks: {
+      //     // beginAtZero: true,
+      //   },
+      // },
     ],
   },
   legend: {
-    display: false
-  }
+    display: false,
+  },
 };
 
-const GroupedBar = ({data, title}) => (
-  <>
-    <div className='header'>
-      <h2>{title}</h2>
-    </div>
-    <Bar data={data} options={options}   />
-  </>
-);
+const GroupedBar = ({ artists, title }) => {
+  const data = {
+    labels: ['Popularity', 'Followers (M)', 'Top Track'],
+    datasets: artists.map((artist, i) => ({
+      label: artist.name,
+      data: [artist.popularity, artist.followers, artist.tracks[0].popularity],
+      backgroundColor: colors[i],
+    })),
+  };
+
+  return (
+    <>
+      <div className="chartHeader">
+        <h2>{title}</h2>
+      </div>
+      <Bar data={data} options={options} />
+    </>
+  );
+};
 
 export default GroupedBar;

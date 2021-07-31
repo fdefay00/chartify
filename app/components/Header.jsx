@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import Hamburger from './Hamburger.jsx';
 
-export default ({ searchArtist }) => {
+export default ({ searchArtist, toggleSideBar }) => {
   const [searchInput, setSearchInput] = useState('');
   const [region, setRegion] = useState('US');
   const regions = [
@@ -100,7 +101,7 @@ export default ({ searchArtist }) => {
           */}
         </form>
       </div>
-      <div className="end"></div>
+      <Hamburger toggleSideBar={toggleSideBar} />
     </header>
   );
 };

@@ -22,14 +22,8 @@ import { Line } from 'react-chartjs-2';
 //     },
 //   ],
 // };
-
+const colors = ['#D1E2C4', '#EBEBE8', '#778A35'];
 const options = {
-  layout: {
-    padding: {
-      left:100,
-      right: 100
-    }
-  },
   scales: {
     yAxes: [
       {
@@ -51,13 +45,26 @@ const options = {
   },
 };
 
-const MultiAxisLine = ({data, options, title}) => (
-  <>
-    <div className='header'>
-      <h1 className='title'>{title}</h1>
-    </div>
-    <Line data={data} options={options} />
-  </>
-);
+const MultiAxisLine = ({ artists, title }) => {
+  const tracks =
+    artists.length === 0
+      ? {}
+      : {
+          labels: artists[0].tracks.map((track, i) => `Track ${++i}`),
+          datasets: artists.map((artist, i) => ({
+            label: artist.name,
+            data: artist.tracks.map((track) => track.popularity),
+            backgroundColor: colors[i],
+          })),
+        };
+  return (
+    <>
+      <div className="chartHeader">
+        <h1 className="title">{title}</h1>
+      </div>
+      <Line data={tracks} options={options} />
+    </>
+  );
+};
 
 export default MultiAxisLine;

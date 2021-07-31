@@ -11,9 +11,9 @@ import Footer from './Footer.jsx';
 import Loader from './Loader.jsx';
 
 export default () => {
-  const colors = ['#D1E2C4', '#EBEBE8', '#778A35'];
   const [artists, setArtists] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [sideBar, setSideBar] = useState(true);
 
   const artistInList = (newArtist) => {
     const exist = artists.filter((artist) => artist.id === newArtist.id);
@@ -34,7 +34,6 @@ export default () => {
         setArtists([...artists, res.data]);
       }
       setLoading(false);
-      // console.log([...artists, res.data]);
     });
   };
 
@@ -43,35 +42,13 @@ export default () => {
     setArtists(newList);
   };
 
-  const data = {
-    labels: ['Popularity', 'Followers (M)', 'Top Track'],
-    datasets: artists.map((artist, i) => ({
-      label: artist.name,
-      data: [artist.popularity, artist.followers, artist.tracks[0].popularity],
-      backgroundColor: colors[i],
-    })),
-  };
-  const tracks =
-    artists.length === 0
-      ? {}
-      : {
-          labels: artists[0].tracks.map((track, i) => `Track ${++i}`),
-          datasets: artists.map((artist, i) => ({
-            label: artist.name,
-            data: artist.tracks.map((track) => track.popularity),
-            backgroundColor: colors[i],
-          })),
-        };
+  const toggleSideBar = () => setSideBar((prev) => !prev);
 
   return (
     <div className="content">
       {loading && <Loader />}
-      <Header searchArtist={searchArtist} />
+      <Header searchArtist={searchArtist} toggleSideBar={toggleSideBar} />
       <div className="container">
-        <Aside>
-          <PopularArtists search={searchArtist} />
-          <SavedArtists />
-        </Aside>
         <main>
           <div className="artistData">
             {artists.map((artist) => (
@@ -79,12 +56,14 @@ export default () => {
             ))}
           </div>
           <div className="chartData">
-            {
-              <Canvas artists={artists} data={data} />
-              //<Chart2 artists={artists} data={tracks} title='Top Tracks'/>
-            }
+            <Canvas artists={artists} />
+            <Chart2 artists={artists} title="Top Tracks" />
           </div>
         </main>
+        <Aside sideBar={sideBar}>
+          <PopularArtists search={searchArtist} />
+          <SavedArtists />
+        </Aside>
       </div>
       <Footer />
     </div>
