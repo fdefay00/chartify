@@ -16,7 +16,7 @@ export default ({ search }) => {
     'Nicki Minnaj',
     'Megan Thee Stalion',
     // 'Bruno Mars',
-    // 'Maroon 5',
+    'Maroon 5',
     'Drake',
     // 'Maneskin',
     'Bad Bunny',

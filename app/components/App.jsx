@@ -45,27 +45,29 @@ export default () => {
   const toggleSideBar = () => setSideBar((prev) => !prev);
 
   return (
-    <div className="content">
-      {loading && <Loader />}
-      <Header searchArtist={searchArtist} toggleSideBar={toggleSideBar} />
-      <div className="container">
-        <main>
-          <div className="artistData">
-            {artists.map((artist) => (
-              <Artist key={artist.id} artist={artist} remove={remove} />
-            ))}
-          </div>
-          <div className="chartData">
-            <Canvas artists={artists} />
-            <Chart2 artists={artists} title="Top Tracks" />
-          </div>
-        </main>
-        <Aside sideBar={sideBar}>
-          <PopularArtists search={searchArtist} />
-          <SavedArtists />
-        </Aside>
+    <>
+      <div className="content">
+        {loading && <Loader />}
+        <Header searchArtist={searchArtist} toggleSideBar={toggleSideBar} />
+        <div className="container">
+          <main>
+            <div className="artistData">
+              {artists.map((artist) => (
+                <Artist key={artist.id} artist={artist} remove={remove} />
+              ))}
+            </div>
+            <div className="chartData">
+              <Canvas artists={artists} />
+              <Chart2 artists={artists} title="Top Tracks" />
+            </div>
+          </main>
+          <Aside sideBar={sideBar}>
+            <PopularArtists search={searchArtist} />
+            <SavedArtists />
+          </Aside>
+        </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };

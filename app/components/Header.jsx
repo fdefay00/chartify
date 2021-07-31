@@ -78,7 +78,7 @@ export default ({ searchArtist, toggleSideBar }) => {
   return (
     <header className="header">
       <div className="start">
-        <h1 className="title"> Chatify </h1>
+        <h1 className="title"> Chartify </h1>
       </div>
       <div className="middle">
         <form onSubmit={handleSubmit}>
