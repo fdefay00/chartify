@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import Hamburger from './Hamburger.jsx';
 
-export default ({ searchArtist }) => {
+export default ({ searchArtist, toggleSideBar }) => {
   const [searchInput, setSearchInput] = useState('');
   const [region, setRegion] = useState('US');
   const regions = [
@@ -69,23 +70,26 @@ export default ({ searchArtist }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(searchInput, region);
-    searchArtist(searchInput, region);
+    // console.log(searchInput, region);
+    if (searchInput) searchArtist(searchInput, region);
     setSearchInput('');
   };
 
   return (
-    <header id="header">
-      <h1 className="title"> Chatify </h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search Artist"
-          name="setSearchInput"
-          value={searchInput}
-          onChange={handleChange}
-        />
-        {/*
+    <header className="header">
+      <div className="start">
+        <h1 className="title"> Chartify </h1>
+      </div>
+      <div className="middle">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Search Artist"
+            name="setSearchInput"
+            value={searchInput}
+            onChange={handleChange}
+          />
+          {/*
           <select onChange={(e) => setRegion(e.target.value)}>
           <option defaultValue value={region}>
             Region
@@ -95,7 +99,9 @@ export default ({ searchArtist }) => {
           ))}
           </select>
           */}
-      </form>
+        </form>
+      </div>
+      <Hamburger toggleSideBar={toggleSideBar} />
     </header>
   );
 };

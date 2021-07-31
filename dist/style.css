@@ -1,116 +1,116 @@
-body {
-  color: #EBEBE8;
-  font-family: 'Rubik', sans-serif;
+:root {
+  --clr-primary: #31352e;
+  --clr-secondary: #778a35;
+  --clr-third-400: #d1e2c4;
+  --clr-third-300: #ebebe8;
+
+  --ff-primary: 'Rubik', sans-serif;
 }
 
-#header {
-  padding: 20px;
+body {
+  font-family: var(--ff-primary);
+  font-size: 1.325rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+  color: var(--clr-third-300);
+  background-color: var(--clr-primary);
+  height: 100%;
+}
+
+.header {
   text-align: center;
-  background: #31352E;
-  color: white;
-  font-size: 20px;
-  border-bottom: 4px solid #D1E2C4;
+  background-color: var(--clr-primary);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 90px;
+  z-index: 1;
+  color: var(--clr-third-300);
+  border-bottom: 4px solid var(--clr-third-400);
 }
-header form {
-  width: 90%;
-}
+
 header h1 {
   font-size: 30px;
-  border-left: 2px solid #D1E2C4;
-  border-bottom: 2px solid #D1E2C4;
-  padding:  10px;
-  color: #D1E2C4;
+  border-left: 2px solid #d1e2c4;
+  border-bottom: 2px solid #d1e2c4;
+  padding: 10px;
+  color: var(--clr-third-400);
 }
-select {
-  width: 100px;
-  padding: 10px 10px;
-  border: none;
-  box-sizing: border-box;
-  background-color: #EBEBE8;
-  font-size: large;
 
-  /* border-radius: 4px; */
-  /* background-color: #f1f1f1; */
+header .start {
+  margin-left: 20px;
+  font-size: 30px;
+  padding: 10px;
+  color: var(--clr-third-400);
+  /* flex-grow: 1; */
+}
+
+header .middle {
+  flex-grow: 3;
 }
 
 input {
-  width: 500px;
+  width: 80%;
   padding: 10px 10px;
-  margin: 0px auto;
-  /* border: none; */
+  font-size: xx-large;
   box-sizing: border-box;
-  background-color: #EBEBE8;
+  background-color: var(--clr-third-300);
   font-size: large;
   text-transform: uppercase;
-  color: #31352E;
+  color: var(--clr-primary);
 }
+
 input:focus {
-  /* background-color: lightblue; */
   outline-width: 0;
-  border: 1px solid #D1E2C4;
+  border: 1px solid var(--clr-third-400);
 }
 
-.sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 250px; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #EBEBE8;
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+header .end {
+  margin-right: 50px;
+  visibility: hidden;
+  /* flex-grow: 1; */
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+.container {
+  display: flex;
+  min-height: 100%;
+  width: 100%;
+}
+
+aside {
+  background-color: #778a35;
+  border-left: 4px solid #d1e2c4;
+  width: 250px;
 }
 
 #container aside h1 {
   font-size: 30px;
-  color: #EBEBE8;
+  color: #ebebe8;
   text-decoration: underline;
 }
 
 #container aside h2 {
   font-size: 17px;
-  color: #EBEBE8;
-  padding: 10px;;
+  color: #ebebe8;
+  padding: 10px;
 }
 
-
-#container {
-  display: flex;
-}
-
-#container aside {
-  border-right: 4px solid #D1E2C4;
-  /* flex-grow: 2; */
-  width: 15%;
-  background-color: #778A35;
-  text-align: center;
-}
 #container main {
   display: flex;
   flex-grow: 4;
   flex-direction: column;
-  background-color: #31352E;
+  background-color: teal;
   text-align: center;
 }
 
 .artistSection {
   margin: 0 auto;
   display: flex;
-  width: 100%;
   justify-content: center;
+  border: 2px dashed white;
 }
 
 .artist {
@@ -127,17 +127,20 @@ input:focus {
   font-size: 15px;
 }
 
-.image img{
-  width: 280px;
+.image img {
   height: 280px;
 }
 
 footer {
-  border-top: 4px solid #D1E2C4;
-
-  background-color: #31352E;
-  padding: 20px;
+  border-top: 4px solid #d1e2c4;
+  background-color: #fff;
+  height: 20px;
   text-align: right;
+
+  position: absolute;
+  bottom: 0;
+  margin-top: -50px;
+  width: 100%;
 }
 footer h4 {
   margin: 0 auto;
@@ -145,6 +148,7 @@ footer h4 {
 footer img {
   width: 92px;
   height: 28px;
+  background-color: wheat;
 }
 
 /*

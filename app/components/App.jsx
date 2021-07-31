@@ -8,20 +8,32 @@ import Aside from './Aside.jsx';
 import SavedArtists from './SavedArtists.jsx';
 import PopularArtists from './PopularArtists.jsx';
 import Footer from './Footer.jsx';
+import Loader from './Loader.jsx';
 
 export default () => {
-  const colors = ['#D1E2C4', '#EBEBE8', '#778A35'];
   const [artists, setArtists] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [sideBar, setSideBar] = useState(true);
+
+  const artistInList = (newArtist) => {
+    const exist = artists.filter((artist) => artist.id === newArtist.id);
+    return exist.length > 0 ? true : false;
+  };
 
   const searchArtist = (q, market) => {
+    setLoading(true);
     axios.get(`/artist?q=${q}&market=${market}`).then((res) => {
+      if (artistInList(res.data)) {
+        setLoading(false);
+        return;
+      }
       if (artists.length > 2) {
         const newList = [artists[1], artists[2]];
         setArtists((prevList) => [prevList[1], prevList[2], res.data]);
       } else {
         setArtists([...artists, res.data]);
       }
-      // console.log([...artists, res.data]);
+      setLoading(false);
     });
   };
 
@@ -30,49 +42,32 @@ export default () => {
     setArtists(newList);
   };
 
-  const data = {
-    labels: ['Popularity', 'Followers (M)', 'Top Track'],
-    datasets: artists.map((artist, i) => ({
-      label: artist.name,
-      data: [artist.popularity, artist.followers, artist.tracks[0].popularity],
-      backgroundColor: colors[i],
-    })),
-  };
-  const tracks =
-    artists.length === 0
-      ? {}
-      : {
-          labels: artists[0].tracks.map((track, i) => `Track ${++i}`),
-          datasets: artists.map((artist, i) => ({
-            label: artist.name,
-            data: artist.tracks.map((track) => track.popularity),
-            backgroundColor: colors[i],
-          })),
-        };
+  const toggleSideBar = () => setSideBar((prev) => !prev);
 
   return (
-    <div>
-      <Header searchArtist={searchArtist} />
-      <div id="container">
-        <Aside className="sidenav">
-          <PopularArtists search={searchArtist} />
-          <SavedArtists />
-        </Aside>
-        <main>
-          <div className="artistSection">
-            {artists.map((artist) => (
-              <Artist key={artist.id} artist={artist} remove={remove} />
-            ))}
-          </div>
-          <div>
-            <Canvas artists={artists} data={data} />
-            {
-              //<Chart2 artists={artists} data={tracks} title='Top Tracks'/>
-            }
-          </div>
-        </main>
+    <>
+      <div className="content">
+        {loading && <Loader />}
+        <Header searchArtist={searchArtist} toggleSideBar={toggleSideBar} />
+        <div className="container">
+          <main>
+            <div className="artistData">
+              {artists.map((artist) => (
+                <Artist key={artist.id} artist={artist} remove={remove} />
+              ))}
+            </div>
+            <div className="chartData">
+              <Canvas artists={artists} />
+              <Chart2 artists={artists} title="Top Tracks" />
+            </div>
+          </main>
+          <Aside sideBar={sideBar}>
+            <PopularArtists search={searchArtist} />
+            <SavedArtists />
+          </Aside>
+        </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
