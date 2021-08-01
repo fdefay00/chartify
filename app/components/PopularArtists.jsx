@@ -16,7 +16,7 @@ export default ({ search, toggleSideBar }) => {
     'Nicki Minnaj',
     'Megan Thee Stalion',
     // 'Bruno Mars',
-    'Maroon 5',
+    // 'Maroon 5',
     'Drake',
     // 'Maneskin',
     'Bad Bunny',
@@ -35,7 +35,7 @@ export default ({ search, toggleSideBar }) => {
     <div>
       <h1>Top Monthly</h1>
       {topArtists.map((artist, i) => (
-        <h2 onClick={() => handleClick(artist)}>
+        <h2 key={i} onClick={() => handleClick(artist)}>
           {++i}. {artist}
         </h2>
       ))}

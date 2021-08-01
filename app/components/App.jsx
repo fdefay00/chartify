@@ -57,8 +57,11 @@ export default () => {
               ))}
             </div>
             <div className="chartData">
+              {artists.length === 0 && (
+                <h1>Select Up to 3 Artists to Compare Spotify Generated Data</h1>
+              )}
               <Canvas artists={artists} />
-              <Chart2 artists={artists} title="Top Tracks" />
+              {artists.length > 0 && <Chart2 artists={artists} title="Top Tracks" />}
             </div>
           </main>
           <Aside sideBar={sideBar}>
