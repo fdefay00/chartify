@@ -20,10 +20,8 @@ export default () => {
           <a href="https://www.twitter.com/fdefay00"> fdefay00</a>
         </p>
         <p>
-          <img src="./img/LI-in-Bug.png" />
-          <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnbF2Q5a4VTs9XoQil91K2UCIPqVpXPsQzjQ&usqp=CAU">
-            fdefay00
-          </a>
+          <img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" />
+          <a href="https://www.linkedin.com/in/fdefay00/">fdefay00</a>
         </p>
       </div>
 
