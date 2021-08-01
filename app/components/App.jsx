@@ -13,7 +13,7 @@ import Loader from './Loader.jsx';
 export default () => {
   const [artists, setArtists] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [sideBar, setSideBar] = useState(true);
+  const [sideBar, setSideBar] = useState(false);
 
   const artistInList = (newArtist) => {
     const exist = artists.filter((artist) => artist.id === newArtist.id);
@@ -62,7 +62,7 @@ export default () => {
             </div>
           </main>
           <Aside sideBar={sideBar}>
-            <PopularArtists search={searchArtist} />
+            <PopularArtists search={searchArtist} toggleSideBar={toggleSideBar} />
             <SavedArtists />
           </Aside>
         </div>

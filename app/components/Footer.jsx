@@ -10,13 +10,18 @@ export default () => {
         </div>
 
         <p>
-          G: <a href="https://www.github.com/fdefay00">fdefay00</a>
+          <span>
+            <img src="./img/GitHub-Mark-Light-32px.png" />
+          </span>
+          <a href="https://www.github.com/fdefay00"> fdefay00</a>
         </p>
         <p>
-          T: <a href="https://www.twitter.com/fdefay00">fdefay00</a>
+          <img src="./img/twitter-logo-blue.png" />
+          <a href="https://www.twitter.com/fdefay00"> fdefay00</a>
         </p>
         <p>
-          in: <a href="https://www.linkedin.com/in/fdefay00">fdefay00</a>
+          <img src="./img/LI-in-Bug.png" />
+          <a href="https://www.linkedin.com/in/fdefay00"> fdefay00</a>
         </p>
       </div>
 

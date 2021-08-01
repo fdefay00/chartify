@@ -84,9 +84,10 @@ aside h1 {
 }
 
 aside h2 {
-  font-size: 17px;
+  font-size: 20px;
   color: #ebebe8;
   padding: 10px;
+  cursor: pointer;
 }
 
 main {
@@ -132,6 +133,14 @@ footer {
   /* margin-left: 10px; */
   font-size: x-small;
   text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info img {
+  width: 20px;
+  height: 20px;
 }
 
 /*

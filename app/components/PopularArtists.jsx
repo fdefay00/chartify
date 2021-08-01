@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default ({ search }) => {
+export default ({ search, toggleSideBar }) => {
   const [topArtists, setTopArtists] = useState([
     'Justin Beiber',
     'The Weekend',
@@ -26,11 +26,16 @@ export default ({ search }) => {
     // 'Khalid',
     // 'Rihanna',
   ]);
+
+  const handleClick = (artist) => {
+    search(artist, 'US');
+    toggleSideBar();
+  };
   return (
     <div>
       <h1>Top Monthly</h1>
       {topArtists.map((artist, i) => (
-        <h2 onClick={() => search(artist, 'US')}>
+        <h2 onClick={() => handleClick(artist)}>
           {++i}. {artist}
         </h2>
       ))}
