@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export default ({ search }) => {
   const [topArtists, setTopArtists] = useState([
-    'Justin beiber',
+    'Justin Beiber',
     'The Weekend',
     'Dua Lipa',
     'Ariana Grande',

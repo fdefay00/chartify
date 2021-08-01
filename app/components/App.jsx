@@ -66,8 +66,8 @@ export default () => {
             <SavedArtists />
           </Aside>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };
