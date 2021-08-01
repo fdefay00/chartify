@@ -175,14 +175,17 @@ footer {
   align-items: center;
 }
 .info p {
-  font-size: large;
+  font-size: medium;
   text-transform: uppercase;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.info a {
+  font-size: x-large;
+}
 
 .info img {
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
 }

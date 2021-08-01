@@ -5,7 +5,7 @@ export default () => {
     <footer>
       <div className="info">
         <div>
-          <p>Developed By</p>
+          <p>Developed By:</p>
           <p>Fabrice Defay</p>
         </div>
 
