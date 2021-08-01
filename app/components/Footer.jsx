@@ -21,7 +21,9 @@ export default () => {
         </p>
         <p>
           <img src="./img/LI-in-Bug.png" />
-          <a href="https://www.linkedin.com/in/fdefay00"> fdefay00</a>
+          <a href="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg">
+            fdefay00
+          </a>
         </p>
       </div>
 
